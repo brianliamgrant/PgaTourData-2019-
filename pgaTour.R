@@ -3,12 +3,8 @@ pga <- read_table2("Desktop/Oracle Prep/pga")
 
 library(tidyr)
 pga$`Player Name` <- paste(pga$FIRST, pga$LAST, sep=" ")
-pga
 
 X2019_data <- read_csv("Desktop/Oracle Prep/2019_data.csv")
-
-pga
-X2019_data 
 
 library(dplyr)
 gir <- X2019_data %>% select(`Player Name`, Variable, Value) %>% 
@@ -23,9 +19,13 @@ putt <- X2019_data %>% select(`Player Name`, Variable, Value) %>%
   filter(Variable == "One-Putt Percentage - (%)")
 putt
 
-write_csv(pga, "Desktop/Oracle Prep/pga.csv")
-write_csv(gir, "Desktop/Oracle Prep/gir.csv")
-write_csv(scoringAvg, "Desktop/Oracle Prep/scoringAvg.csv")
-write_csv(putt, "Desktop/Oracle Prep/putt.csv")
-
-
+install.packages("xlsx")
+library("xlsx")
+write.xlsx(pga, "Desktop/Oracle Prep/data/pga.xlsx", sheetName = "Sheet1", 
+           col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(gir, "Desktop/Oracle Prep/data/gir.xlsx", sheetName = "Sheet1", 
+           col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(scoringAvg, "Desktop/Oracle Prep/data/scoringAvg.xlsx", sheetName = "Sheet1", 
+           col.names = TRUE, row.names = TRUE, append = FALSE)
+write.xlsx(putt, "Desktop/Oracle Prep/data/putt.xlsx", sheetName = "Sheet1", 
+           col.names = TRUE, row.names = TRUE, append = FALSE)
