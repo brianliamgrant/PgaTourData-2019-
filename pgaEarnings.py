@@ -11,9 +11,9 @@ from bs4 import BeautifulSoup
 page = (pga.content, 'html.parser')
 
 #re-format the HTML to see the content better
-print(soup.prettify())
+print(page.prettify())
 
 #earnings and player data contained in a table in the HTML file and parsed through to get the information in each row
-trElements = soup.find_all('tr')
+trElements = page.find_all('tr')
 for i in trElements:
     print(i.get_text())
